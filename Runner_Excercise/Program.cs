@@ -45,25 +45,54 @@
                 q++;
             }
 
-            //add age group based rankings
+            //age group lists
+            List<Runner> kids = new List<Runner>();
+            List<Runner> youngAdults = new List<Runner>();
+            List<Runner> adults = new List<Runner>();
+
+            //sorts into age group lists
             foreach (Runner r in runners)
             {
                 if (r.Age <= 15)
                 {
-
+                    kids.Add(r);
                 }
                 else if (r.Age > 15 &&  r.Age < 30)
                 {
-                     
+                     youngAdults.Add(r);
                 }
                 else if (r.Age >= 30)
                 {
-
+                    adults.Add(r);
                 }
             }
 
+            //sets rankings within each age group
+            int a = 0;
+            foreach (Runner r in kids)
+            {
+                r.Ranking = a + 1;
+                a++;
+            }
+
+            int b = 0;
+            foreach (Runner r in youngAdults)
+            {
+                r.Ranking = b + 1;
+                b++;
+            }
+
+            int c = 0;
+            foreach (Runner r in adults)
+            {
+                r.Ranking = c + 1;
+                c++;
+            }
+
+
             //display results
             int n = 1;
+            Console.WriteLine("              Name    Time    Age   Ranking");
             foreach (Runner r in runners)
             {
                 Console.WriteLine($"Runner #{n}     {r.Name}      {r.Time}      {r.Age}     {r.Ranking}");
