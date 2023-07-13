@@ -92,10 +92,10 @@
 
             //display results
             int n = 1;
-            Console.WriteLine("              Name    Time    Age   Ranking");
+            Console.WriteLine("\t\tName\tTime\tAge\tRanking");
             foreach (Runner r in runners)
             {
-                Console.WriteLine($"Runner #{n}     {r.Name}      {r.Time}      {r.Age}     {r.Ranking}");
+                Console.WriteLine($"Runner #{n}\t{r.Name}\t{r.Time}\t{r.Age}\t{r.Ranking}");
                 n++;
             }
 
