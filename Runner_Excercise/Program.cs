@@ -1,4 +1,9 @@
-﻿namespace Runner_Exercise
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace Runner_Exercise
 {
     class Program
     {
@@ -46,48 +51,37 @@
                 q++;
             }
 
-            //age group lists
-            List<Runner> kids = new List<Runner>();
-            List<Runner> youngAdults = new List<Runner>();
-            List<Runner> adults = new List<Runner>();
-
             //sorts into age group lists
-            foreach (Runner r in runners)
-            {
-                if (r.Age <= 15)
-                {
-                    kids.Add(r);
-                }
-                else if (r.Age > 15 &&  r.Age < 30)
-                {
-                     youngAdults.Add(r);
-                }
-                else if (r.Age >= 30)
-                {
-                    adults.Add(r);
-                }
-            }
+            List<Runner> kids = new(from k in runners
+                                                 where k.Age <= 15
+                                                 select k);
+            List < Runner > youngAdults = new(from ya in runners
+                                                           where ya.Age > 15 && ya.Age < 30
+                                                           select ya);
+            List<Runner> adults = new(from a in runners
+                                                   where a.Age >= 30
+                                                   select a);
 
             //sets rankings within each age group
-            int a = 0;
+            int n1 = 0;
             foreach (Runner r in kids)
             {
-                r.Ranking = a + 1;
-                a++;
+                r.Ranking = n1 + 1;
+                n1++;
             }
 
-            int b = 0;
+            int n2 = 0;
             foreach (Runner r in youngAdults)
             {
-                r.Ranking = b + 1;
-                b++;
+                r.Ranking = n2 + 1;
+                n2++;
             }
 
-            int c = 0;
+            int n3 = 0;
             foreach (Runner r in adults)
             {
-                r.Ranking = c + 1;
-                c++;
+                r.Ranking = n3 + 1;
+                n3++;
             }
 
 
