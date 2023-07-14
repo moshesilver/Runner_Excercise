@@ -5,53 +5,26 @@ namespace Runner_Exercise
     class Runner
     {
 
-        //FIELDS
-        private static int runnerCount;
-        private string name;
-        private int time;
-        private int age;
-        private int ranking;
-
         //CONSTRUCTORS
         public Runner(string name, int time, int age)
         {
             this.Name = name;
             this.Time = time;
             this.Age = age;
-            runnerCount++;
-        }
-
-        static Runner()
-        {
-            runnerCount = 0;
+            RunnerCount++;
         }
 
         //PROPERTIES
         public static int RunnerCount
-        {
-            get { return runnerCount; }
-            set { runnerCount = value; }
-        }
+        { get; set; }
         public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        { get;  set; }
         public int Time
-        {
-            get { return time; }
-            set { time = value; }   
-        }
+        { get; set; }
         public int Age
-        {
-            get { return age; }
-            set { age = value; }
-        }
+        { get; set; }
         public int Ranking
-        {
-            get { return ranking; }
-            set { ranking = value; } 
-        }
+        { get; set; }
 
     }
 

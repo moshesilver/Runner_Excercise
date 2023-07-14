@@ -2,6 +2,15 @@
 {
     class Program
     {
+        //Swap function declaration
+        static void Swap<T>(T[] array, int index1, int index2)
+        {
+            T temporary = array[index1];
+            array[index1] = array[index2];
+            array[index2] = temporary;
+        }
+
+        //MAIN
         static void Main(string[] args)
         {
             //instantiating Runner objects in array
@@ -17,14 +26,6 @@
                 new Runner("Ben", 9, 29),
                 new Runner("Brandon", 15, 14)
             };
-
-            //Swap function declaration
-            static void Swap<T>(T[] array, int index1, int index2)
-            {
-                T temporary = array[index1];
-                array[index1] = array[index2];
-                array[index2] = temporary;
-            }
 
             //reorder based on time
             int q = 0;
