@@ -8,12 +8,12 @@ namespace Runner_Exercise
     class Program
     {
         //Swap function declaration
-        static void Swap<T>(T[] array, int index1, int index2)
+        /*static void Swap<T>(T[] array, int index1, int index2)
         {
             T temporary = array[index1];
             array[index1] = array[index2];
             array[index2] = temporary;
-        }
+        }*/
 
         //MAIN
         static void Main(string[] args)
@@ -33,7 +33,9 @@ namespace Runner_Exercise
             };
 
             //reorder based on time
-            int q = 0;
+            List<Runner> sortedRunners = runners.OrderBy(r => r.Time).ToList();
+
+            /*int q = 0;
             while (q < runners.Length)
             {
                 int i = 0;
@@ -49,18 +51,12 @@ namespace Runner_Exercise
                 }
 
                 q++;
-            }
+            }*/
 
             //sorts into age group lists
-            List<Runner> kids = new(from k in runners
-                                                 where k.Age <= 15
-                                                 select k);
-            List < Runner > youngAdults = new(from ya in runners
-                                                           where ya.Age > 15 && ya.Age < 30
-                                                           select ya);
-            List<Runner> adults = new(from a in runners
-                                                   where a.Age >= 30
-                                                   select a);
+            List<Runner> kids = sortedRunners.Where(k => k.Age <= 15).ToList();
+            List<Runner> youngAdults = sortedRunners.Where(ya => ya.Age > 15 && ya.Age < 30).ToList();
+            List<Runner> adults = sortedRunners.Where(a => a.Age >= 30).ToList();
 
             //sets rankings within each age group
             int n1 = 0;
@@ -88,7 +84,7 @@ namespace Runner_Exercise
             //display results
             int n = 1;
             Console.WriteLine("\t\tName\tTime\tAge\tRanking");
-            foreach (Runner r in runners)
+            foreach (Runner r in sortedRunners)
             {
                 Console.WriteLine($"Runner #{n}\t{r.Name}\t{r.Time}\t{r.Age}\t{r.Ranking}");
                 n++;
