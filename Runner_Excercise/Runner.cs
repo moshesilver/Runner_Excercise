@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace Runner_Exercise
+﻿namespace Runner_Exercise
 {
     class Runner
     {
@@ -8,23 +6,28 @@ namespace Runner_Exercise
         //CONSTRUCTORS
         public Runner(string name, int time, int age)
         {
-            this.Name = name;
-            this.Time = time;
-            this.Age = age;
+            Name = name;
+            Time = time;
+            Age = age;
             RunnerCount++;
         }
 
         //PROPERTIES
         public static int RunnerCount
-        { get; set; }
+        { get; private set; }
         public string Name
-        { get;  set; }
+        { get; }
         public int Time
-        { get; set; }
+        { get; }
         public int Age
-        { get; set; }
+        { get; }
         public int Ranking
         { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name,-12}{Time}\t{Age}\t{Ranking}";
+        }
 
     }
 

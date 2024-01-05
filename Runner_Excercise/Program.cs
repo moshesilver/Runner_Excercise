@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-
-namespace Runner_Exercise
+﻿namespace Runner_Exercise
 {
     class Program
     {
@@ -16,7 +11,7 @@ namespace Runner_Exercise
         }*/
 
         //MAIN
-        static void Main(string[] args)
+        static void Main()
         {
             //instantiating Runner objects in array
             Runner[] runners = new Runner[]
@@ -54,40 +49,28 @@ namespace Runner_Exercise
             }*/
 
             //sorts into age group lists
-            List<Runner> kids = sortedRunners.Where(k => k.Age <= 15).ToList();
-            List<Runner> youngAdults = sortedRunners.Where(ya => ya.Age > 15 && ya.Age < 30).ToList();
-            List<Runner> adults = sortedRunners.Where(a => a.Age >= 30).ToList();
+            List<List<Runner>> runnerLists = new()
+            {
+                sortedRunners.Where(r => r.Age <= 15).ToList(),
+                sortedRunners.Where(r => r.Age > 15 && r.Age < 30).ToList(),
+                sortedRunners.Where(r => r.Age >= 30).ToList()
+            };
 
             //sets rankings within each age group
-            int n1 = 0;
-            foreach (Runner r in kids)
+            for (int i = 0; i < runnerLists.Count; i++)
             {
-                r.Ranking = n1 + 1;
-                n1++;
+                for (int j = 0; j < runnerLists[i].Count; j++)
+                {
+                    runnerLists[i][j].Ranking = j + 1;
+                }
             }
-
-            int n2 = 0;
-            foreach (Runner r in youngAdults)
-            {
-                r.Ranking = n2 + 1;
-                n2++;
-            }
-
-            int n3 = 0;
-            foreach (Runner r in adults)
-            {
-                r.Ranking = n3 + 1;
-                n3++;
-            }
-
 
             //display results
             int n = 1;
-            Console.WriteLine("\t\tName\tTime\tAge\tRanking");
+            Console.WriteLine($"{"Name",16}\tTime\tAge\tRanking");
             foreach (Runner r in sortedRunners)
             {
-                Console.WriteLine($"Runner #{n}\t{r.Name}\t{r.Time}\t{r.Age}\t{r.Ranking}");
-                n++;
+                Console.WriteLine($"Runner #{n++,-4}{r}");
             }
 
 
